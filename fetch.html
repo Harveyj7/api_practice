@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fetch api</title>
+  </head>
+  <body>
+    <script>
+      ///////////////XML DATA REQUEST
+      // function to handle success
+      //   function success() {
+      //     var data = JSON.parse(this.responseText); //parse the string to JSON
+      //     console.log(data);
+      //   }
+
+      //   // function to handle error
+      //   function error(err) {
+      //     console.log("Request Failed", err); //error details will be in the "err" object
+      //   }
+
+      //   var xhr = new XMLHttpRequest(); //invoke a new instance of the XMLHttpRequest
+      //   xhr.onload = success; // call success function if request is successful
+      //   xhr.onerror = error; // call error function if request failed
+      //   xhr.open("GET", "https://api.github.com/users/manishmshiva"); // open a GET request
+      //   xhr.send(); // send the request to the server.
+
+      /////
+      //   GET Request.
+      fetch("https://api.github.com/users/manishmshiva")
+        // Handle success
+        .then((response) => response.json()) // convert to json
+        .then((json) => console.log(json)) //print data to console
+        .catch((err) => console.log("Request Failed", err)); // Catch errors
+
+      let _data = {
+        title: "hey",
+        body: "bay",
+        userId: 1,
+        this: "poo",
+        more_data: false,
+      };
+
+      //   POST DATA request
+      fetch("https://reqres.in/api/users", {
+        method: "POST",
+        body: JSON.stringify(_data),
+        headers: { "Content-type": "application/json; charset=UTF-8" },
+      })
+        .then((response) => response.json())
+        .then((json) => console.log(json))
+        .catch((err) => console.log("error"));
+    </script>
+  </body>
+</html>
